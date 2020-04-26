@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Extractor</title>
+        <style>
+            body {background-color: #34495e}
+            .copyright{
+                position: relative;
+                color: whitesmoke;
+                width:100%;
+                margin-top : 5%;
+                text-align:center;
+            }
+            .container{
+                padding: 10px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron text-center" style="background-color: #2c3e50;">
+            <h1 style="color:aliceblue;">My Extractor App</h1>
+        </div>
+        <div class="container" style="background-color:#bdc3c7;" >
+            <form action="#" method="post">
+                <p>Input file: <input type = "file" class="custom-file-input" name = "file" /></p>
+                <p>Keyword: <input type="text" class="form-control" name="ky" placeholder="Input keyword here..." /></p>
+                <p>Algorithm: 
+                    <div class= "container">
+                        <input type="radio" name="options" id="option2" value="BM"> Boyer-Moore  </input><br>
+                        <input type="radio" name="options" id="option1" value="KMP"> KMP </input><br>
+                        <input type="radio" name="options" id="option3" value="Regex"> Regex </input><br>
+                    </div>
+                </p>
+                <p><input type="submit" class="btn btn-primary mb-2" value="Extract"/></p>
+            </form>
+        </div>
+        {% if cek == 0 %}
+        <p></p>
+        {% else %}
+            <div class="container" style="background-color:#ecf0f1;">
+                {% if size > 0 %}
+                    {% for i in range(size) %}
+                        <span>Keyword: {{keyword}}</span><br>
+                        <span>Hasil Ekstraksi Informasi:</span><br>
+                        <span>Jumlah: {{jumlah[i]}}; Waktu: {{waktu[i]}}</span><br>
+                        <span>{{result[i]}} <mark>({{file}})</mark></span><br>
+                        <p></p>
+                    {% endfor %}
+                {% else %}
+                    <p>No keyword {{keyword}} found in file {{file}} </p>
+                {% endif %}
+            
+            </div>
+        {% endif %}
+        <div class="copyright">
+            <p>©2020 Jovan Karuna Cahyadi / 13518024 / K-3</p>
+        </div>
+    </body>
+</html>
